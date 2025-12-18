@@ -1,7 +1,5 @@
 const PaymentForm = () => {
-  return (
-    <div className=''>PaymentForm</div>
-  )
-}
+  return <div className="">PaymentForm</div>;
+};
 
-export default PaymentForm
+export default PaymentForm;

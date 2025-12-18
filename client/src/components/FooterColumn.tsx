@@ -7,7 +7,7 @@ type FooterColumnProps = {
 
 const FooterColumn = ({ title, links }: FooterColumnProps) => {
   return (
-    <div className="flex flex-col gap-4 text-sm text-gray-400 items-center md:items-start">
+    <div className="flex flex-col items-center gap-4 text-sm text-gray-400 md:items-start">
       <p className="text-sm text-amber-50">{title}</p>
 
       {links.map((link) => (

@@ -17,12 +17,13 @@ const CartSummary = ({
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
+
   const discount = 10;
   const shippingFee = 10;
   const total = subtotal - discount + shippingFee;
 
   return (
-    <div className="flex w-full flex-col gap-8 rounded-lg border-1 border-gray-100 p-8 shadow-lg lg:w-5/12 h-max">
+    <div className="flex h-max w-full flex-col gap-8 rounded-lg border-1 border-gray-100 p-8 shadow-lg lg:w-5/12">
       <h2 className="font-semibold">Card Details</h2>
       <div className="flex flex-col gap-4">
         <div className="flex justify-between text-sm">

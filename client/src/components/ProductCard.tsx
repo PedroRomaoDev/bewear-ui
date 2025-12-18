@@ -27,7 +27,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
   };
 
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden w-full max-w-[350px]">
+    <div className="w-full max-w-[350px] overflow-hidden rounded-lg shadow-lg">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
         <div className="relative aspect-[2/3]">
@@ -35,24 +35,24 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             src={product.images[productTypes.color]}
             alt={product.name}
             fill
-            className="object-cover hover:scale-105 transition-all duration-300"
+            className="object-cover transition-all duration-300 hover:scale-105"
           />
         </div>
       </Link>
 
       {/* PRODUCT DETAILS */}
       <div className="flex flex-col gap-4 p-4">
-        <h1 className="font-medium text-sm">{product.name}</h1>
+        <h1 className="text-sm font-medium">{product.name}</h1>
         <p className="text-sm text-gray-500">{product.shortDescription}</p>
         {/* PRODUCT TYPES */}
         <div className="flex items-center gap-4 text-xs">
           {/* SIZES */}
-          <div className=" flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <span className="text-gray-500">Size</span>
             <select
               name="size"
               id="size"
-              className="ring ring-gray-200 rounded-md px-2 py-1"
+              className="rounded-md px-2 py-1 ring ring-gray-200"
               onChange={(e) =>
                 handleProductType({ type: "size", value: e.target.value })
               }
@@ -65,12 +65,12 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             </select>
           </div>
           {/* COLORS */}
-          <div className=" flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <span className="text-gray-500">Color</span>
             <div className="flex items-center gap-2">
               {product.colors.map((color) => (
                 <div
-                  className={` cursor-pointer border-1 ${
+                  className={`cursor-pointer border-1 ${
                     productTypes.color === color
                       ? "border-gray-400"
                       : "border-gray-200"
@@ -81,7 +81,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
                   }
                 >
                   <div
-                    className="w-[14px] h-[14px] rounded-full"
+                    className="h-[14px] w-[14px] rounded-full"
                     style={{ backgroundColor: color }}
                   />
                 </div>
@@ -92,8 +92,8 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         {/* PRICE AND ADD TO CART BUTTON*/}
         <div className="flex items-center justify-between">
           <p className="font-medium">${product.price.toFixed(2)}</p>
-          <button className="ring ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2">
-            <ShoppingCart className="w-4 h-4" />
+          <button className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm shadow-lg ring ring-gray-200 transition-all duration-300 hover:bg-black hover:text-white">
+            <ShoppingCart className="h-4 w-4" />
             Add to card
           </button>
         </div>

@@ -1,7 +1,5 @@
 const ShippingForm = () => {
-  return (
-    <div className=''>ShippingForm</div>
-  )
-}
+  return <div className="">ShippingForm</div>;
+};
 
-export default ShippingForm
+export default ShippingForm;

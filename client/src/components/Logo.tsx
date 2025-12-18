@@ -14,11 +14,9 @@ const Logo = ({ text, textClassName = "" }: LogoProps) => {
         alt="TrendLama"
         width={36}
         height={36}
-        className="w-6 h-6 md:w-9 md:h-9"
+        className="h-6 w-6 md:h-9 md:w-9"
       />
-      <p
-        className={`${textClassName} text-md font-medium tracking-wider`}
-      >
+      <p className={`${textClassName} text-md font-medium tracking-wider`}>
         {text}
       </p>
     </Link>
