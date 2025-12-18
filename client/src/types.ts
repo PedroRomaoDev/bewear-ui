@@ -1,3 +1,7 @@
+import z from "zod";
+
+import { shippingFormSchema } from "./schemas/cart.schema";
+
 export type ProductType = {
   id: string | number;
   name: string;
@@ -18,3 +22,5 @@ export type CardItemType = ProductType & {
 };
 
 export type CardItemsType = CardItemType[];
+
+export type shippingFormInputs = z.infer<typeof shippingFormSchema>;
