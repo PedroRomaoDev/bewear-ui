@@ -15,7 +15,13 @@ const CartPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [shippingForm, setShippingForm] = useState(null);
+  const [shippingForm, setShippingForm] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    city: string;
+  } | null>(null);
 
   const activeStep = parseInt(searchParams.get("step") || "1");
 
@@ -37,7 +43,7 @@ const CartPage = () => {
           {activeStep === 1 ? (
             <CartItemsList items={MOCK_CART_ITEMS} />
           ) : activeStep === 2 ? (
-            <ShippingForm />
+            <ShippingForm setShippingForm={setShippingForm} />
           ) : activeStep === 3 && shippingForm ? (
             <PaymentForm />
           ) : (
