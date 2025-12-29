@@ -5,23 +5,18 @@ import { useState } from "react";
 
 import PaymentForm from "@/components/PaymentForm";
 import ShippingForm from "@/components/ShippingForm";
+import { ShippingFormInputs } from "@/types";
 
 import CartItemsList from "../../components/CartItemsList";
 import CartSteps from "../../components/CartSteps";
 import CartSummary from "../../components/CartSummary";
-import { CART_STEPS, MOCK_CART_ITEMS } from "../../constants/cart.constants";
+import { CART_STEPS } from "../../constants/cart.constants";
 
 const CartPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [shippingForm, setShippingForm] = useState<{
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-  } | null>(null);
+  const [shippingForm, setShippingForm] = useState<ShippingFormInputs>();
 
   const activeStep = parseInt(searchParams.get("step") || "1");
 
@@ -41,7 +36,7 @@ const CartPage = () => {
         {/* STEPS */}
         <div className="flex w-full flex-col gap-8 rounded-lg border-1 border-gray-100 p-8 shadow-lg lg:w-7/12">
           {activeStep === 1 ? (
-            <CartItemsList items={MOCK_CART_ITEMS} />
+            <CartItemsList />
           ) : activeStep === 2 ? (
             <ShippingForm setShippingForm={setShippingForm} />
           ) : activeStep === 3 && shippingForm ? (
@@ -55,7 +50,7 @@ const CartPage = () => {
 
         {/* DETAILS */}
         <CartSummary
-          cartItems={MOCK_CART_ITEMS}
+          //     cartItems={MOCK_CART_ITEMS}
           activeStep={activeStep}
           onContinue={handleContinue}
         />

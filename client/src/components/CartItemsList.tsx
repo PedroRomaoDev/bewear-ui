@@ -1,16 +1,18 @@
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 
-import { CardItemsType } from "@/types";
+import useCartStore from "@/app/stores/cartStore";
+// import { CardItemsType } from "@/types";
 
-type CartItemsListProps = {
-  items: CardItemsType;
-};
+// type CartItemsListProps = {
+//   items: CardItemsType;
+// };
 
-const CartItemsList = ({ items }: CartItemsListProps) => {
+const CartItemsList = () => {
+  const { cart } = useCartStore();
   return (
     <>
-      {items.map((item) => (
+      {cart.map((item) => (
         <div className="flex items-center justify-between" key={item.id}>
           {/* IMAGE AND DETAILS */}
           <div className="flex gap-8">

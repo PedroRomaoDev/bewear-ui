@@ -1,19 +1,18 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
 
-import { CardItemsType } from "@/types";
+import useCartStore from "@/app/stores/cartStore";
 
 type CartSummaryProps = {
-  cartItems: CardItemsType;
   activeStep: number;
   onContinue: () => void;
 };
 
-const CartSummary = ({
-  cartItems,
-  activeStep,
-  onContinue,
-}: CartSummaryProps) => {
-  const subtotal = cartItems.reduce(
+const CartSummary = ({ activeStep, onContinue }: CartSummaryProps) => {
+  const { cart } = useCartStore();
+
+  const subtotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
