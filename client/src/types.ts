@@ -29,3 +29,13 @@ export type CardItemsType = CardItemType[];
 export type ShippingFormInputs = z.infer<typeof shippingFormSchema>;
 
 export type PaymentFormInputs = z.infer<typeof paymentFormSchema>;
+
+export type CartStoreStateType = {
+  cart: CardItemsType;
+};
+
+export type CardStoreActionsType = {
+  addToCart: (product: CardItemType) => void;
+  removeFromCart: (product: CardItemType) => void;
+  clearCart: () => void;
+};
