@@ -34,7 +34,7 @@ const CartPage = () => {
       {/* STEPS AND DETAILS */}
       <div className="flex w-full flex-col gap-16 lg:flex-row">
         {/* STEPS */}
-        <div className="flex w-full flex-col gap-8 rounded-lg border-1 border-gray-100 p-8 shadow-lg lg:w-7/12">
+        <div className="flex w-full flex-col gap-8 rounded-lg border border-gray-100 p-8 shadow-lg lg:w-7/12">
           {activeStep === 1 ? (
             <CartItemsList />
           ) : activeStep === 2 ? (

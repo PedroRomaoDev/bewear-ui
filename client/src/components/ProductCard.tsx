@@ -41,10 +41,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
   };
 
   return (
-    <div className="w-full max-w-[350px] overflow-hidden rounded-lg shadow-lg">
+    <div className="w-full max-w-87.5 overflow-hidden rounded-lg shadow-lg">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[2/3]">
+        <div className="relative aspect-2/3">
           <Image
             src={product.images[productTypes.color]}
             alt={product.name}
@@ -84,7 +84,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             <div className="flex items-center gap-2">
               {product.colors.map((color) => (
                 <div
-                  className={`cursor-pointer border-1 ${
+                  className={`cursor-pointer border ${
                     productTypes.color === color
                       ? "border-gray-400"
                       : "border-gray-200"
@@ -95,7 +95,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
                   }
                 >
                   <div
-                    className="h-[14px] w-[14px] rounded-full"
+                    className="h-3.5 w-3.5 rounded-full"
                     style={{ backgroundColor: color }}
                   />
                 </div>

@@ -22,7 +22,7 @@ const CartSummary = ({ activeStep, onContinue }: CartSummaryProps) => {
   const total = subtotal - discount + shippingFee;
 
   return (
-    <div className="flex h-max w-full flex-col gap-8 rounded-lg border-1 border-gray-100 p-8 shadow-lg lg:w-5/12">
+    <div className="flex h-max w-full flex-col gap-8 rounded-lg border border-gray-100 p-8 shadow-lg lg:w-5/12">
       <h2 className="font-semibold">Card Details</h2>
       <div className="flex flex-col gap-4">
         <div className="flex justify-between text-sm">
