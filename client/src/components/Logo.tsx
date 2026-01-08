@@ -11,7 +11,7 @@ const Logo = ({ text, textClassName = "" }: LogoProps) => {
     <Link href="/" className="flex items-center">
       <Image
         src="/logo.png"
-        alt="TrendLama"
+        alt="Bewear"
         width={36}
         height={36}
         className="h-6 w-6 md:h-9 md:w-9"

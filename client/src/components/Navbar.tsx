@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="flex w-full items-center justify-between border-b border-gray-200 pb-4">
       {/* LEFT */}
 
-      <Logo text="TRENDLAMA." textClassName="hidden md:block" />
+      <Logo text="Bewear." textClassName="hidden md:block" />
 
       {/* RIGHT */}
       <div className="flex items-center gap-6">
