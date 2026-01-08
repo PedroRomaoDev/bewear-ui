@@ -3,7 +3,9 @@
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
+import useCartStore from "@/app/stores/cartStore";
 import { ProductType } from "@/types";
 
 const ProductInteraction = ({
@@ -20,6 +22,8 @@ const ProductInteraction = ({
   const searchParams = useSearchParams();
   const [quantity, setQuantity] = useState(1);
 
+  const { addToCart } = useCartStore();
+
   const handleTypeChange = (type: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set(type, value);
@@ -34,6 +38,22 @@ const ProductInteraction = ({
         setQuantity((prev) => prev - 1);
       }
     }
+  };
+
+  const handleColorChange = (type: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(type, value);
+    router.push(`${pathName}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      ...product,
+      quantity,
+      selectedSize,
+      selectedColor,
+    });
+    toast.success("Product added to cart!");
   };
 
   return (
@@ -66,7 +86,7 @@ const ProductInteraction = ({
               <div
                 className={`cursor-pointer border p-0.5 ${selectedColor === color ? "border-gray-300" : "border-white"} `}
                 key={color}
-                //     onClick={() => handleColorChange("color", color)}
+                onClick={() => handleColorChange("color", color)}
               >
                 <div
                   className={`h-6 w-6`}
@@ -97,7 +117,10 @@ const ProductInteraction = ({
         </div>
       </div>
       {/* BUTTONS */}
-      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white shadow-lg">
+      <button
+        onClick={() => handleAddToCart()}
+        className="flex cursor-pointer items-center justify-center gap-2 rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white shadow-lg"
+      >
         <Plus className="h-4 w-4" />
         Add to Cart
       </button>
