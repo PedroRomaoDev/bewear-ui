@@ -1,2 +1,2 @@
-cd client && pnpm exec lint-staged
-cd ../admin && pnpm exec lint-staged
+cd admin && pnpm exec lint-staged
+cd ../client && pnpm exec lint-staged
