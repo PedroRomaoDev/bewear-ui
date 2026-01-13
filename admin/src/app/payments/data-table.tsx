@@ -9,6 +9,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import { Trash2 } from "lucide-react";
 import { useState } from "react";
 
 import { DataTablePagination } from "@/components/TablePagination";
@@ -47,9 +48,17 @@ export function DataTable<TData, TValue>({
     },
   });
 
-  console.log(table);
+  console.log(rowSelection);
   return (
     <div className="rounded-md border">
+      {Object.keys(rowSelection).length > 0 && (
+        <div className="flex justify-end">
+          <button className="m-4 flex cursor-pointer items-center gap-2 rounded-md bg-red-500 px-2 py-1 text-sm text-white">
+            <Trash2 className="h-4 w-4" />
+            Delete Payment
+          </button>
+        </div>
+      )}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -92,24 +101,6 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      {/* <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div> */}
       <DataTablePagination table={table} />
     </div>
   );
