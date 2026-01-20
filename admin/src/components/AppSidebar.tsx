@@ -1,29 +1,27 @@
 import {
   Calendar,
-  ChevronDown,
   ChevronUp,
   Home,
   Inbox,
   Plus,
-  Projector,
   Search,
   Settings,
+  Shirt,
+  ShoppingBasket,
+  User,
   User2,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
+import EditUser from "./EditUser";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { Sheet, SheetTrigger } from "./ui/sheet";
 import {
   Sidebar,
   SidebarContent,
@@ -37,9 +35,6 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarSeparator,
 } from "./ui/sidebar";
 
@@ -109,94 +104,118 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupLabel>Products</SidebarGroupLabel>
           <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Project</span>
+            <Plus /> <span className="sr-only">Add Product</span>
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/#">
-                    <Projector />
-                    See All Projects
+                  <Link href="/products">
+                    <Shirt />
+                    See All Products
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/#">
-                    <Plus />
-                    Add Project
-                  </Link>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href="#">
+                          <Plus />
+                          Add Product
+                        </Link>
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href="#">
+                          <Plus />
+                          Add Category
+                        </Link>
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        {/* COLLAPSABLE */}
-        <Collapsible defaultOpen className="group/collapsible">
-          <SidebarGroup>
-            <SidebarGroupLabel asChild>
-              <CollapsibleTrigger>
-                Collapsable Group
-                <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-              </CollapsibleTrigger>
-            </SidebarGroupLabel>
-            <CollapsibleContent>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/#">
-                        <Projector />
-                        See All Projects
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/#">
-                        <Plus />
-                        Add Project
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </CollapsibleContent>
-          </SidebarGroup>
-        </Collapsible>
-        {/* NESTED */}
+
         <SidebarGroup>
-          <SidebarGroupLabel>Nested Items</SidebarGroupLabel>
+          <SidebarGroupLabel>Users</SidebarGroupLabel>
+          <SidebarGroupAction>
+            <Plus /> <span className="sr-only">Add Product</span>
+          </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/#">
-                    <Projector />
-                    See All Projects
+                  <Link href="/users">
+                    <User />
+                    See All Users
                   </Link>
                 </SidebarMenuButton>
-                <SidebarMenuSub>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild>
-                      <Link href="/#">
-                        <Plus />
-                        Add Project
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild>
-                      <Link href="/#">
-                        <Plus />
-                        Add Category
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                </SidebarMenuSub>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href="#">
+                          <Plus />
+                          Add User
+                        </Link>
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Orders / Payments</SidebarGroupLabel>
+          <SidebarGroupAction>
+            <Plus /> <span className="sr-only">Add Order</span>
+          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/payments">
+                    <ShoppingBasket />
+                    See All Transactions
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href="#">
+                          <Plus />
+                          Add Order
+                        </Link>
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
