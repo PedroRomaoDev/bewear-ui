@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 
 import { Button } from "./ui/button";
+import { Checkbox } from "./ui/checkbox";
 import {
   Form,
   FormControl,
@@ -98,12 +99,12 @@ const AddProduct = () => {
     resolver: zodResolver(formSchema),
   });
   return (
-    <SheetContent>
+    <SheetContent className="overflow-y-auto">
       <SheetHeader>
         <SheetTitle className="mb-4">Add Product</SheetTitle>
         <SheetDescription asChild>
           <Form {...form}>
-            <form className="space-y-8">
+            <form className="space-y-8 pb-10">
               <FormField
                 control={form.control}
                 name="name"
@@ -195,6 +196,32 @@ const AddProduct = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="sizes"
+                render={() => (
+                  <FormItem>
+                    <FormLabel>Sizes</FormLabel>
+                    <FormControl>
+                      <div className="my-2 grid grid-cols-3 gap-4">
+                        {sizes.map((size) => (
+                          <div className="flex items-center gap-2" key={size}>
+                            <Checkbox id={size} />
+                            <label htmlFor={size} className="cursor-pointer">
+                              {size.toUpperCase()}
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </FormControl>
+                    <FormDescription>
+                      Select the available sizes for the product.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <Button type="submit">Submit</Button>
             </form>
           </Form>
